@@ -1,0 +1,60 @@
+openapi: 3.0.3
+
+info:
+  title: API reserva de restaurantes
+  description: |-
+    Esta API se encarga de manejar la información de las reservas que se tienen registradas en la base de datos. specification.
+  version: 1.0.0
+
+servers:
+  - url: https://localhost:3031/api/
+tags:
+  - name: reservation
+    description: Este endpoint maneja la información de las reservas, específicamente su creación y obtención de todas las reservas.
+  - name: restaurant
+    description: Este endpoint maneja la información de los restaurantes, permite la realización de CRUD
+  - name: user
+    description: Este endpoint maneja la información de los usuarios que realizarán reserva, permite la realización de CRUD
+
+paths:
+  /user:
+    put:
+      tags:
+        - user
+      description: Actualiza la información de un usuario por el ID
+      operationId: updateID
+      requestBody:
+        description: Actualizar un usuario existente en la BD
+        content:
+          application/json:
+            schema:
+              $ref: '/src/models/user'
+        required: true
+      responses:
+        '500':
+          description: Error ocurrio actualizando usuario con id [${id}]
+    post:
+      tags:
+        - user
+      description: Agrega un nuevo usuario a la BD
+      operationId: addUser
+      requestBody:
+        description: Create a new pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '/src/models/user'
+        required: true
+      responses:
+        '201':
+          description: Operación exitosa
+        '500':
+          description: Error ocurrio al tratar de crear el usuario.
+    get:
+      tags:
+        - usuarios
+      description: Muestra todos los usuarios que se tengan en la BD
+      operationId: findAllUser
+      responses:
+        '500':
+          description: error al  leer los usuarios de la base de datos
