@@ -43,7 +43,7 @@ router.get('/user/:id', (req,res)=>{
 //actualizar un usuario
 router.put('/user/:id', (req,res)=>{
     let id = req.params.id
-    let requestUsuario = req.user.username
+    let requestUsuario = req.body
     userController.updateUser(id, requestUsuario)
     .then(user=>{
         res.json(user)
