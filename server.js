@@ -2,13 +2,15 @@ const express=require('express');
 const mongoose=require('mongoose');
 require('dotenv').config();
 const userRoutes = require('./src/routes/user');
+const restaurantRoutes = require('./src/routes/restaurant');
 
 const app=express();
 const port=process.env.PORT || 3000;
 
-//middleware
+
 app.use(express.json());
 app.use('/api',userRoutes);
+app.use('/api',restaurantRoutes);
 
 //routes
 app.get('/',(req,res)=>{
