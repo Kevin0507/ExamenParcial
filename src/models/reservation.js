@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
 
 const reservationSchema = mongoose.Schema({
-    name:{
+    user_id:{
         type: String,
         required: true
     },
-    age:{
+    restaurant_id:{
+        type: String,
+        required: true
+    },
+    date:{
+        type: String,
+        required: true
+    },
+    hour:{
+        type: Numer,
+        required: true
+    },
+    amount:{
         type: Number,
         required: true
-    },
-    email:{
-        type: String,
-        required: true
     }
-    
 });
 
-module.exports = mongoose.model('Reservation', reservationSchema);
+module.exports = mongoose.model('Reservation',reservationSchema);
