@@ -3,6 +3,7 @@ const mongoose=require('mongoose');
 require('dotenv').config();
 const userRoutes = require('./src/routes/user');
 const restaurantRoutes = require('./src/routes/restaurant');
+const reservationRoutes = require('./src/routes/reservation');
 
 const app=express();
 const port=process.env.PORT || 3000;
@@ -11,6 +12,7 @@ const port=process.env.PORT || 3000;
 app.use(express.json());
 app.use('/api',userRoutes);
 app.use('/api',restaurantRoutes);
+app.use('/api',reservationRoutes);
 
 //routes
 app.get('/',(req,res)=>{
